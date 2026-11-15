@@ -1,0 +1,36 @@
+# DESAFÍO NASA SPACE APPS: "GeoBeats - Jukebox Terrestre" 🌍🎶
+**Duración:** 1 Hora | **Público:** Jóvenes creadores | **Enfoque:** Gamificación, Accesibilidad & Sonificación Interactiva
+
+---
+
+## 🎯 El Reto
+El Centro de Información Terrestre (EIC) de la NASA produce imágenes impresionantes de nuestro planeta, pero la ciencia visual deja afuera a personas con discapacidad visual y a veces se siente distante.
+
+Tu misión es crear una **Jukebox Terrestre interactiva**: una aplicación que transforme los datos y mapas satelitales de la NASA en música y paisajes sonoros en tiempo real. 
+
+---
+
+## 🎮 Mecánica de Gamificación: "Sound Packs" (Temas Sonoros)
+La Jukebox no solo suena científica: ¡tiene estilo musical! Los participantes implementarán o personalizarán estilos seleccionables:
+
+1. 👾 **Cosmic Chiptune (Retro 8-bit / Chiptune):**
+   - Sintetizador clásico estilo Game Boy/Arcade con arpegios rápidos y divertidos para explorar el mapa como un videojuego.
+
+2. 🌌 **Deep Atmosphere (Lo-Fi Espacial / Ambient):**
+   - Tonos suaves, campanas y bajos profundos con reverberación galáctica (estilo *Interstellar* o música chillout de estudio).
+
+3. ⚡ **Solar Synthwave (Cyberpunk / Electrónica Dinámica):**
+   - Bajos pulsantes de sintetizador analógico y texturas rítmicas modernas que transmiten la energía electromagnética y la urgencia climática del planeta sin caer en sirenas ruidosas.
+
+---
+
+## 🕹️ Modos de Juego / Interacción para el Usuario:
+- **Línea de Escáner Satelital:** Una barra láser recorre el mapa de izquierda a derecha (como una aguja de tocadiscos espacial) tocando cada región climática a su paso.
+- **Modo DJ Táctil (Hover / Click):** El usuario toca con el cursor zonas como el Amazonas, el Sahara o la Antártida y dispara acordes en tiempo real según la temperatura y humedad del píxel.
+
+---
+
+## 🏆 Criterios de Evaluación Exprés (Jurado)
+1. **Impacto Sonoro & Estilo (35%):** ¿Suena agradable y armónico gracias al uso de escalas pentatónicas y temas sonoros?
+2. **Experiencia de Usuario & Gamificación (35%):** ¿Es divertido, fluido y visualmente llamativo (escáner láser, controles DJ)?
+3. **Inclusión y Storytelling (30%):** ¿Cómo ayuda esta herramienta a una persona con baja visión a "sentir" el cambio climático?

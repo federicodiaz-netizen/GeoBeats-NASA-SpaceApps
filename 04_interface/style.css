@@ -1,0 +1,678 @@
+/* ==========================================================================
+   NASA GeoBeats - Estilos Visuales (04_interface/style.css)
+   Estética Centro de Control Espacial, Glassmorphism y Paleta Neón
+   ========================================================================== */
+
+:root {
+  --bg-deep: #070913;
+  --bg-panel: rgba(16, 22, 38, 0.75);
+  --border-neon: rgba(0, 243, 255, 0.25);
+  --accent-cyan: #00f3ff;
+  --accent-magenta: #ff007f;
+  --accent-amber: #ffb703;
+  --text-main: #f0f4fc;
+  --text-muted: #8e9bb4;
+  --font-cyber: 'Orbitron', monospace, sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Fondo Estrellado Animado */
+.stars-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(0, 243, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 80%, rgba(255, 0, 127, 0.08) 0%, transparent 40%),
+    radial-gradient(1px 1px at 25px 35px, #ffffff 100%, transparent),
+    radial-gradient(1.5px 1.5px at 150px 80px, #00f3ff 100%, transparent),
+    radial-gradient(1px 1px at 300px 220px, #ffffff 100%, transparent);
+  background-size: 100% 100%, 100% 100%, 350px 350px, 450px 450px, 550px 550px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Header */
+.app-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 30px;
+  background: linear-gradient(90deg, rgba(11, 61, 145, 0.42) 0%, rgba(16, 22, 38, 0.85) 38%, rgba(16, 22, 38, 0.85) 100%);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(11, 61, 145, 0.8);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(0, 243, 255, 0.3);
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nasa-logo-wrapper {
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 12px rgba(11, 61, 145, 0.85));
+  transition: transform 0.3s ease;
+}
+
+.nasa-logo-wrapper:hover {
+  transform: scale(1.06) rotate(-2deg);
+}
+
+.nasa-meatball-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nasa-mission-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-cyber);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: #8ab4f8;
+  text-transform: uppercase;
+}
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #fc3d21;
+  box-shadow: 0 0 8px #fc3d21;
+  animation: nasaPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes nasaPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+h1 {
+  font-family: var(--font-cyber);
+  font-size: 1.65rem;
+  letter-spacing: 1.2px;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(0, 243, 255, 0.45);
+}
+
+.title-accent {
+  font-size: 0.9rem;
+  background: linear-gradient(135deg, #0b3d91, #fc3d21);
+  padding: 2px 8px;
+  border-radius: 5px;
+  vertical-align: middle;
+  letter-spacing: 1.5px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Sound Packs Buttons & Language Switch */
+.header-right-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sound-packs-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  background: rgba(8, 12, 24, 0.85);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  border-radius: 24px;
+  padding: 3px;
+  gap: 2px;
+  box-shadow: 0 0 12px rgba(0, 243, 255, 0.15);
+}
+
+.lang-option {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-cyber);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 11px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.22s ease;
+}
+
+.lang-option .flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lang-option:hover {
+  color: #fff;
+}
+
+.lang-option.active {
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.28), rgba(255, 0, 127, 0.25));
+  color: #fff;
+  border: 1px solid var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+}
+
+.pack-label {
+  font-family: var(--font-cyber);
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  letter-spacing: 1.5px;
+}
+
+.pack-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  background: rgba(8, 12, 24, 0.8);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 620px;
+}
+
+.pack-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.pack-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.pack-btn.active {
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.2), rgba(255, 0, 127, 0.2));
+  color: #fff;
+  border: 1px solid var(--accent-cyan);
+  box-shadow: 0 0 12px rgba(0, 243, 255, 0.35);
+}
+
+/* Main Layout */
+.main-container {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+  gap: 16px;
+}
+
+/* Controls Bar */
+.controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  background: var(--bg-panel);
+  backdrop-filter: blur(10px);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-neon);
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+select {
+  background: #0d1326;
+  color: var(--text-main);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+}
+
+/* Custom Upload Button */
+.upload-btn-wrapper input[type="file"] {
+  display: none;
+}
+
+.custom-file-label {
+  background: rgba(255, 183, 3, 0.15);
+  color: var(--accent-amber);
+  border: 1px dashed var(--accent-amber);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.custom-file-label:hover {
+  background: rgba(255, 183, 3, 0.28);
+  box-shadow: 0 0 12px rgba(255, 183, 3, 0.4);
+}
+
+/* Play / Stop Action Buttons */
+.playback-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  font-family: var(--font-cyber);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+
+.play-btn {
+  background: linear-gradient(135deg, #00f3ff, #0077ff);
+  color: #050811;
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+}
+
+.play-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 22px rgba(0, 243, 255, 0.7);
+}
+
+.stop-btn {
+  background: rgba(255, 0, 127, 0.15);
+  color: var(--accent-magenta);
+  border: 1px solid var(--accent-magenta);
+}
+
+.stop-btn:hover {
+  background: var(--accent-magenta);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+}
+
+.slider-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.slider-group span {
+  color: var(--accent-cyan);
+}
+
+input[type="range"] {
+  accent-color: var(--accent-cyan);
+  cursor: pointer;
+}
+
+/* Botón Banda Sonora Armónica de Fondo */
+.bg-music-btn {
+  background: rgba(0, 243, 255, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 243, 255, 0.45);
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.bg-music-btn.active {
+  background: rgba(0, 243, 255, 0.18);
+  box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
+}
+
+.bg-music-btn.off {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+}
+
+.bg-music-btn:hover {
+  border-color: var(--accent-cyan);
+  color: #fff;
+}
+
+/* Botón Guía de Voz para No Videntes */
+.voice-guide-btn {
+  background: rgba(255, 183, 3, 0.14);
+  color: var(--accent-amber);
+  border: 1px solid rgba(255, 183, 3, 0.5);
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.voice-guide-btn.active {
+  background: rgba(255, 183, 3, 0.2);
+  box-shadow: 0 0 12px rgba(255, 183, 3, 0.35);
+}
+
+.voice-guide-btn.off {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
+}
+
+.voice-guide-btn:hover {
+  border-color: var(--accent-amber);
+  color: #fff;
+}
+
+/* Tarjeta de Introducción Escrita de 1 Párrafo por Imagen */
+.image-intro-card {
+  background: rgba(12, 18, 34, 0.82);
+  border: 1px solid rgba(0, 243, 255, 0.28);
+  border-left: 4px solid var(--accent-amber);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.intro-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.intro-badge {
+  font-family: var(--font-cyber);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #050811;
+  background: var(--accent-amber);
+  padding: 3px 9px;
+  border-radius: 12px;
+  letter-spacing: 1px;
+}
+
+.intro-title {
+  font-family: var(--font-cyber);
+  font-size: 0.95rem;
+  color: var(--accent-cyan);
+  letter-spacing: 0.5px;
+}
+
+.intro-paragraph {
+  font-size: 1rem;
+  color: var(--text-main);
+  line-height: 1.45;
+}
+
+/* Viewer Canvas Section */
+.viewer-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 640px;
+}
+
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: clamp(640px, 68vh, 820px);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-neon);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  background: #000;
+  cursor: crosshair;
+}
+
+#mapCanvas {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+/* Línea de Escáner Láser */
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, #00f3ff, #ff007f);
+  box-shadow: 0 0 15px #00f3ff, 0 0 30px #ff007f;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.scan-line.active {
+  opacity: 1;
+}
+
+/* Proyecciones de Ejes Punteadas (Crosshair Satelital) */
+.crosshair-x {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0;
+  border-top: 1px dashed rgba(0, 243, 255, 0.45);
+  box-shadow: 0 0 6px rgba(0, 243, 255, 0.25);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 15;
+}
+
+.crosshair-y {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 0;
+  border-left: 1px dashed rgba(0, 243, 255, 0.45);
+  box-shadow: 0 0 6px rgba(0, 243, 255, 0.25);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 15;
+}
+
+/* Cursor Pulse */
+.cursor-pulse {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-cyan);
+  box-shadow: 0 0 12px var(--accent-cyan), inset 0 0 6px var(--accent-cyan);
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+  z-index: 20;
+}
+
+.cursor-pulse.pulsing {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(2.2);
+  border-color: var(--accent-magenta);
+  box-shadow: 0 0 20px var(--accent-magenta);
+}
+
+.nasa-hud-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(11, 61, 145, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-left: 3px solid #fc3d21;
+  color: #ffffff;
+  font-family: var(--font-cyber);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  letter-spacing: 1.2px;
+  pointer-events: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.mode-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(5, 10, 20, 0.85);
+  border: 1px solid rgba(0, 243, 255, 0.4);
+  color: var(--accent-cyan);
+  font-family: var(--font-cyber);
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+}
+
+/* Dashboard Inferior de Telemetría */
+.telemetry-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  position: relative;
+  z-index: 10;
+}
+
+.telemetry-card {
+  background: var(--bg-panel);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  backdrop-filter: blur(8px);
+}
+
+.telem-title {
+  display: block;
+  font-family: var(--font-cyber);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 1.2px;
+  margin-bottom: 6px;
+}
+
+.telem-value {
+  font-family: var(--font-cyber);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.note-highlight {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.color-badge-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid #fff;
+  background: #000;
+}
+
+.accessibility-tip {
+  grid-column: span 1;
+}
+
+.telem-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}

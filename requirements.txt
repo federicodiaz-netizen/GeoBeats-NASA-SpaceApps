@@ -1,0 +1,21 @@
+# Dependencias para NASA GeoBeats (Jukebox Terrestre)
+# 
+# NOTA DE COMPATIBILIDAD Y VERSIONES:
+# Para garantizar una experiencia fluida sin errores de compilación durante el hackathon,
+# estas son las librerías estándar probadas para procesamiento científico y audio.
+
+# Procesamiento de Datos e Imágenes Satelitales
+numpy>=1.24.0,<2.0.0
+pandas>=2.0.0
+Pillow>=10.0.0
+opencv-python-headless>=4.8.0.76
+
+# Audio & Sonificación (Generación y Síntesis)
+scipy>=1.11.0
+mido>=1.3.0
+
+# Servidor Web Ligero / Dashboard (opcional para ejecución Python)
+flask>=3.0.0
+
+# Herramientas de visualización / Jupyter (útil para experimentación rápida)
+matplotlib>=3.7.0

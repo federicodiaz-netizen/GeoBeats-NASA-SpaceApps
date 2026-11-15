@@ -1,0 +1,50 @@
+# ROADMAP EXPRÉS: GeoBeats (1 Hora / Hackathon Joven)
+Objetivo: Entregar una Jukebox Terrestre interactiva, gamificada y con sonido en tiempo real.
+
+---
+
+## ⏱️ Timeline Minuto a Minuto (60 min)
+
+### [00:00 - 00:10] Bloque 1: Despegue & Starter Kit (10 min)
+- **Objetivo:** 0% fricción técnica.
+- **Acción:** Los participantes abren el Starter Kit (con 3 mapas satelitales de la NASA listos: Temperatura Global, Corrientes Oceánicas, Emisiones CO₂).
+- **Setup:** No instalar librerías pesadas ni drivers de audio locales. Ejecución directa en navegador o Colab interactivo.
+- **Entregable:** La plantilla base se abre y muestra la primera imagen en pantalla.
+
+---
+
+### [00:10 - 00:25] Bloque 2: El Motor de Sonificación (15 min)
+- **Objetivo:** Convertir colores en música armónica.
+- **Lógica de traducción:**
+  - **Color Rojo (Calor / CO₂):** Notas agudas / Frecuencia alta.
+  - **Color Azul (Océanos / Frío):** Notas graves / Bajos profundos.
+  - **Brillo (Intensidad):** Volumen de la nota.
+- **Garantía musical:** Aplicar una escala Pentatónica (5 notas) para que cualquier combinación suene siempre armónica y afinada.
+- **Entregable:** Al hacer clic en un punto del mapa, se escucha una nota clara y afinada según la zona climática.
+
+---
+
+### [00:25 - 00:45] Bloque 3: Gamificación & Sound Packs (20 min)
+- **Objetivo:** Efecto WOW y diversión interactiva.
+- **Implementación de Temas Sonoros (Sound Packs):**
+  - 👾 *Preset 8-bit Arcade* (Onda cuadrada / chiptune retro).
+  - 🌌 *Preset Lo-Fi Espacial* (Onda sinusoidal suave con reverberación).
+  - 🚨 *Preset Alerta Climática* (Sintetizador tenso y pulsante).
+- **Mecánicas Interactivas:**
+  - **Barra de Escáner Satelital:** Un rayo láser recorre el mapa horizontalmente reproduciendo la melodía del planeta como un tocadiscos.
+  - **Modo DJ de la Tierra:** Mover el cursor sobre el mapa para disparar efectos y notas en vivo.
+- **Entregable:** La Jukebox permite alternar estilos sonoros y tiene animación visual activa al reproducir.
+
+---
+
+### [00:45 - 00:55] Bloque 4: Personalización & Storytelling (10 min)
+- **Objetivo:** Preparar la narrativa para el jurado NASA Space Apps.
+- **Ajustes:** Elegir colores de interfaz, nombre del equipo y definir el "Mensaje del Planeta".
+- **Accesibilidad:** Redactar la explicación de cómo una persona ciega o con baja visión utiliza el sonido para diagnosticar zonas en crisis climática (ej. "el sonido chirriante indica anomalía térmica").
+- **Entregable:** Aplicación pulida y lista para compartir.
+
+---
+
+### [00:55 - 01:00] Bloque 5: Mini-Demos & Escucha Colectiva (5 min)
+- Cada equipo reproduce 30 segundos de su planeta sonoro frente a los demás.
+- Votación rápida al sonido más original o al mejor "DJ Climático".

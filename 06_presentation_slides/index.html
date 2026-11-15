@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoBeats: Earth Information Jukebox — 7-Slide NASA Presentation</title>
+  <style>
+    :root {
+      --bg: #050811;
+      --panel: #0b1120;
+      --border: #1e293b;
+      --cyan: #00f0ff;
+      --gold: #ffcc33;
+      --nasa-blue: #0b3d91;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+    }
+    header {
+      width: 100%;
+      max-width: 1280px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 10px 16px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    header h1 {
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+    }
+    header h1 span {
+      color: var(--cyan);
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    button, a.btn {
+      background: var(--nasa-blue);
+      color: #fff;
+      border: 1px solid var(--cyan);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    button:hover, a.btn:hover {
+      background: #1453bd;
+    }
+    .slide-counter {
+      font-weight: 700;
+      color: var(--gold);
+      min-width: 90px;
+      text-align: center;
+    }
+    .slide-container {
+      width: 100%;
+      max-width: 1280px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    }
+    .slide-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .dots {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .dot {
+      width: 34px;
+      height: 10px;
+      border-radius: 5px;
+      background: #1e293b;
+      cursor: pointer;
+      border: 1px solid #334155;
+    }
+    .dot.active {
+      background: var(--cyan);
+      border-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NASA Space Apps Challenge • <span>GeoBeats 7-Slide Demonstration</span></h1>
+    <div class="controls">
+      <button id="prevBtn">◀ Prev</button>
+      <span class="slide-counter" id="slideCounter">Slide 1 / 7</span>
+      <button id="nextBtn">Next ▶</button>
+      <a class="btn" href="./GeoBeats_NASA_7_Slides.pdf" target="_blank">📄 Open 7-Slide PDF</a>
+    </div>
+  </header>
+
+  <div class="slide-container">
+    <img id="slideImg" src="./slide_01_intro_overview.png" alt="Slide 1" />
+  </div>
+
+  <div class="dots" id="dotsContainer"></div>
+
+  <script>
+    const slides = [
+      "./slide_01_intro_overview.png",
+      "./slide_02_header_soundpacks_lang.png",
+      "./slide_03_controls_scales_volume.png",
+      "./slide_04_accessibility_voice_guide.png",
+      "./slide_05_touch_dj_mode.png",
+      "./slide_06_live_scanner_mode.png",
+      "./slide_07_telemetry_and_impact.png"
+    ];
+    let current = 0;
+    const imgEl = document.getElementById("slideImg");
+    const counterEl = document.getElementById("slideCounter");
+    const dotsContainer = document.getElementById("dotsContainer");
+
+    function render() {
+      imgEl.src = slides[current];
+      imgEl.alt = "Slide " + (current + 1);
+      counterEl.textContent = "Slide " + (current + 1) + " / " + slides.length;
+      Array.from(dotsContainer.children).forEach((d, idx) => {
+        d.classList.toggle("active", idx === current);
+      });
+    }
+
+    slides.forEach((_, idx) => {
+      const d = document.createElement("div");
+      d.className = "dot" + (idx === 0 ? " active" : "");
+      d.addEventListener("click", () => {
+        current = idx;
+        render();
+      });
+      dotsContainer.appendChild(d);
+    });
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      current = (current - 1 + slides.length) % slides.length;
+      render();
+    });
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      current = (current + 1) % slides.length;
+      render();
+    });
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === " ") {
+        current = (current + 1) % slides.length;
+        render();
+      } else if (e.key === "ArrowLeft") {
+        current = (current - 1 + slides.length) % slides.length;
+        render();
+      }
+    });
+  </script>
+</body>
+</html>

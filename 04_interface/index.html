@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NASA GeoBeats - Jukebox Terrestre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars-bg"></div>
+
+  <header class="app-header">
+    <div class="logo-group">
+      <div class="nasa-logo-wrapper" title="National Aeronautics and Space Administration - Earth Information Center">
+        <svg class="nasa-meatball-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="NASA Logo">
+          <defs>
+            <radialGradient id="nasaSphereGrad" cx="35%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#1557c0"/>
+              <stop offset="55%" stop-color="#0b3d91"/>
+              <stop offset="100%" stop-color="#062256"/>
+            </radialGradient>
+            <filter id="nasaGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#00f3ff" flood-opacity="0.45"/>
+            </filter>
+          </defs>
+          <!-- Esfera Azul NASA (Meatball) -->
+          <circle cx="60" cy="60" r="48" fill="url(#nasaSphereGrad)" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" filter="url(#nasaGlow)"/>
+          <!-- Constelaciones de estrellas blancas -->
+          <circle cx="34" cy="34" r="1.3" fill="#ffffff"/>
+          <circle cx="42" cy="28" r="1.0" fill="#ffffff"/>
+          <circle cx="28" cy="44" r="0.9" fill="#ffffff"/>
+          <circle cx="78" cy="30" r="1.4" fill="#ffffff"/>
+          <circle cx="88" cy="38" r="1.0" fill="#ffffff"/>
+          <circle cx="82" cy="24" r="0.8" fill="#ffffff"/>
+          <circle cx="36" cy="84" r="1.2" fill="#ffffff"/>
+          <circle cx="46" cy="92" r="0.9" fill="#ffffff"/>
+          <circle cx="80" cy="86" r="1.3" fill="#ffffff"/>
+          <circle cx="70" cy="92" r="1.0" fill="#ffffff"/>
+          <!-- Órbita espacial blanca -->
+          <ellipse cx="60" cy="60" rx="52" ry="18" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-dasharray="180 45" transform="rotate(-28 60 60)"/>
+          <!-- Vector Rojo Supersónico (Chevron NASA #FC3D21) -->
+          <path d="M 10 76 Q 55 44 108 26 Q 64 52 46 96 L 38 72 L 10 76 Z" fill="#fc3d21"/>
+          <!-- Tipografía Oficial NASA -->
+          <text x="60" y="68" text-anchor="middle" fill="#ffffff" font-family="'Orbitron', sans-serif" font-weight="900" font-size="25" letter-spacing="2.5" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7));">NASA</text>
+        </svg>
+      </div>
+      <div class="title-block">
+        <div class="nasa-mission-tag">
+          <span class="live-dot"></span>
+          <span id="missionTagText">NASA EARTH INFORMATION CENTER • MISSION TELEMETRY</span>
+        </div>
+        <h1>GeoBeats <span class="title-accent">EIC</span> 🌍🎶</h1>
+        <p class="subtitle" id="appSubtitle">Earth Information Jukebox • Sonificación Satelital en Tiempo Real</p>
+      </div>
+    </div>
+
+    <div class="header-right-group">
+      <!-- Sound Packs Selector -->
+      <div class="sound-packs-container">
+        <span class="pack-label" id="packLabel">SOUND PACK:</span>
+        <div class="pack-buttons" id="packButtons">
+          <button class="pack-btn active" data-pack="chiptune" id="btnChiptune">
+            <span class="icon">👾</span>
+            <span class="name">Cosmic Chiptune</span>
+          </button>
+          <button class="pack-btn" data-pack="lofi" id="btnLofi">
+            <span class="icon">🌌</span>
+            <span class="name">Deep Atmosphere</span>
+          </button>
+          <button class="pack-btn" data-pack="synthwave" id="btnSynthwave">
+            <span class="icon">⚡</span>
+            <span class="name">Solar Synthwave</span>
+          </button>
+          <button class="pack-btn" data-pack="jazz" id="btnJazz">
+            <span class="icon">🎷</span>
+            <span class="name">Earth Jazz</span>
+          </button>
+          <button class="pack-btn" data-pack="rock" id="btnRock">
+            <span class="icon">🎸</span>
+            <span class="name">Orbital Rock</span>
+          </button>
+          <button class="pack-btn" data-pack="cinematic" id="btnCinematic">
+            <span class="icon">🎻</span>
+            <span class="name">Cinematic</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Language Switch with Flags -->
+      <div class="lang-switch" id="langSwitch" title="Cambiar idioma / Switch language">
+        <button type="button" class="lang-option active" data-lang="es" id="btnLangEs">
+          <span class="flag">🇪🇸</span>
+          <span>ES</span>
+        </button>
+        <button type="button" class="lang-option" data-lang="en" id="btnLangEn">
+          <span class="flag">🇺🇸</span>
+          <span>EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <!-- Controls Bar -->
+    <section class="controls-bar">
+      <div class="control-group">
+        <label for="datasetSelect" id="datasetLabel">📡 Dataset Satelital:</label>
+        <select id="datasetSelect">
+          <option value="/01_datasets/vegetacion_ndvi.png" data-es="🌿 Global: Vegetación y Biomasa (NDVI)" data-en="🌿 Global: Vegetation & Biomass (NDVI)">🌿 Global: Vegetación y Biomasa (NDVI)</option>
+          <option value="/01_datasets/temperatura_global.png" data-es="🌡️ Global: Anomalías Térmicas" data-en="🌡️ Global: Thermal Anomalies">🌡️ Global: Anomalías Térmicas</option>
+          <option value="/01_datasets/corrientes_oceanicas.jpg" data-es="🌊 Global: Corrientes Oceánicas (ECCO)" data-en="🌊 Global: Ocean Currents (ECCO)">🌊 Global: Corrientes Oceánicas (ECCO)</option>
+          <option value="/01_datasets/sudamerica_incendios_ndvi.jpg" data-es="🌎 Sudamérica: Amazonía & Incendios" data-en="🌎 South America: Amazonia & Wildfires">🌎 Sudamérica: Amazonía & Incendios</option>
+          <option value="/01_datasets/patagonia_glaciar_upsala.jpg" data-es="🏔️ Argentina: Glaciar Upsala (Patagonia)" data-en="🏔️ Argentina: Upsala Glacier (Patagonia)">🏔️ Argentina: Glaciar Upsala (Patagonia)</option>
+        </select>
+      </div>
+
+      <div class="control-group upload-btn-wrapper">
+        <label for="customImageInput" class="custom-file-label" id="uploadLabel">
+          📁 Subir Mi Propio Mapa
+        </label>
+        <input type="file" id="customImageInput" accept="image/png, image/jpeg, image/webp">
+      </div>
+
+      <div class="control-group scale-selector-group">
+        <label for="scaleRootSelect" id="scaleLabel">🎼 Escala:</label>
+        <select id="scaleRootSelect" title="Seleccionar nota tónica de la escala">
+          <option value="C" selected>C (Do)</option>
+          <option value="C#">C# (Do#)</option>
+          <option value="D">D (Re)</option>
+          <option value="Eb">Eb (Mib)</option>
+          <option value="E">E (Mi)</option>
+          <option value="F">F (Fa)</option>
+          <option value="F#">F# (Fa#)</option>
+          <option value="G">G (Sol)</option>
+          <option value="Ab">Ab (Lab)</option>
+          <option value="A">A (La)</option>
+          <option value="Bb">Bb (Sib)</option>
+          <option value="B">B (Si)</option>
+        </select>
+        <select id="scaleModeSelect" title="Seleccionar modo Mayor o Menor">
+          <option value="major" data-es="Mayor" data-en="Major" selected>Mayor</option>
+          <option value="minor" data-es="Menor" data-en="Minor">Menor</option>
+        </select>
+      </div>
+
+      <div class="playback-controls">
+        <button id="btnPlay" class="action-btn play-btn">▶ INICIAR ESCÁNER</button>
+        <button id="btnStop" class="action-btn stop-btn">⏹ DETENER</button>
+      </div>
+
+      <div class="slider-group">
+        <label for="speedRange">⚡ Tempo: <span id="speedValue">60</span> BPM</label>
+        <input type="range" id="speedRange" min="30" max="160" value="60">
+      </div>
+
+      <div class="slider-group">
+        <label for="volumeRange"><span id="volumeLabelText">🔊 Vol. Interactivo:</span> <span id="volumeValue">80%</span></label>
+        <input type="range" id="volumeRange" min="0" max="100" value="80" title="Volumen de las notas interactivas del mapa">
+      </div>
+
+      <div class="slider-group">
+        <label for="bgVolumeRange"><span id="bgVolumeLabelText">🎵 Vol. Fondo:</span> <span id="bgVolumeValue">50%</span></label>
+        <input type="range" id="bgVolumeRange" min="0" max="100" value="50" title="Volumen de la banda sonora armónica de fondo">
+      </div>
+
+      <div class="control-group">
+        <button id="btnBgMusic" class="bg-music-btn active" title="Activar/Desactivar banda sonora armónica de fondo en bajo volumen">
+          🎵 Fondo Armónico: ON
+        </button>
+        <button id="btnVoiceGuide" class="voice-guide-btn active" aria-pressed="true" title="Activar/Desactivar instrucciones habladas para personas no videntes (Tecla V)">
+          🗣️ Guía de Voz: ON
+        </button>
+      </div>
+    </section>
+
+    <!-- Breve Introducción Escrita y Hablada de la Imagen Actual (1 Párrafo) -->
+    <section class="image-intro-card" id="imageIntroCard" aria-live="polite">
+      <div class="intro-header">
+        <span class="intro-badge" id="introBadgeLabel">♿ GUÍA AUDITIVA & DESCRIPCIÓN DE IMAGEN</span>
+        <strong class="intro-title" id="imageIntroTitle">🌿 Mapa Global: Vegetación y Biomasa (NDVI)</strong>
+      </div>
+      <p class="intro-paragraph" id="imageIntroText">
+        Este mapa satelital de la NASA muestra el índice global de vegetación sobre los continentes. Los océanos aparecen oscuros y profundos produciendo tonos graves, mientras que las grandes selvas como la Amazonía, África central y los bosques boreales brillan en tonos verdes intensos que generan melodías cálidas y agudas al tocarlos.
+      </p>
+    </section>
+
+    <!-- Interactive Canvas Viewer -->
+    <section class="viewer-section">
+      <div class="canvas-wrapper" id="canvasWrapper">
+        <canvas id="mapCanvas"></canvas>
+        <div id="crosshairX" class="crosshair-x"></div>
+        <div id="crosshairY" class="crosshair-y"></div>
+        <div id="scanLine" class="scan-line"></div>
+        <div id="cursorPulse" class="cursor-pulse"></div>
+        <div class="nasa-hud-badge" id="nasaHudBadge">🛰️ NASA EOSDIS • EARTH OBSERVING SYSTEM</div>
+        <div class="mode-badge" id="modeBadge">MODO: DJ TÁCTIL (Haz clic o mueve el cursor)</div>
+      </div>
+    </section>
+
+    <!-- Telemetry & Accessibility Dashboard -->
+    <footer class="telemetry-dashboard">
+      <div class="telemetry-card">
+        <span class="telem-title" id="titleCoords">COORDENADAS</span>
+        <div class="telem-value" id="telemCoords">Lat: 0.0° | Lon: 0.0°</div>
+      </div>
+      <div class="telemetry-card">
+        <span class="telem-title" id="titlePixelColor">COLOR DEL PÍXEL</span>
+        <div class="telem-value color-badge-wrap">
+          <span id="colorSwatch" class="color-swatch"></span>
+          <span id="telemRGB">RGB: [0, 0, 0]</span>
+        </div>
+      </div>
+      <div class="telemetry-card">
+        <span class="telem-title" id="telemScaleTitle">NOTA MUSICAL (C - DO MAYOR)</span>
+        <div class="telem-value note-highlight" id="telemNote">--</div>
+      </div>
+      <div class="telemetry-card">
+        <span class="telem-title" id="titleFreq">FRECUENCIA DE AUDIO</span>
+        <div class="telem-value" id="telemFreq">-- Hz</div>
+      </div>
+      <div class="telemetry-card accessibility-tip">
+        <span class="telem-title" id="titleAccess">ACCESIBILIDAD MULTISENSORIAL</span>
+        <div class="telem-desc" id="telemDesc">Pasa el cursor o activa el escáner para escuchar cómo suena la superficie de la Tierra.</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="descriptions.js"></script>
+  <script src="audio.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
