@@ -1,0 +1,7 @@
+main.py
+requirements.txt
+02_sonification/*.py
+03_sound_packs/*.py
+__pycache__/
+*.pyc
+.DS_Store
